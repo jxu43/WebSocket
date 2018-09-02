@@ -14,4 +14,9 @@ app.use(express.static('public'));
 var io = socket(server);
 io.on('connection', (socket) => {
     console.log('made socket connection', socket.id);
+
+    socket.on('chat', function(data){
+        // console.log(data);
+        io.emit('chat', data);
+    });
 });
